@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import CharacterCard from "./CharacterCard";
+import EpisodeCard from "./EpisodeCard";
 import SearchForm from "./SearchForm";
-import { Button } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react';
 
-export default function CharacterList() {
-
-  const [characters, setCharacters] = useState();
+const EpisodeList = () => {
+  const [episodes, setEpisodes] = useState();
   const [page, setPage] = useState("");
   const [pagination, setPagination] = useState('');
   const [number, setNumber] = useState(1)
 
   useEffect(() => {
-    axios.get(`https://rickandmortyapi.com/api/character/?name=${page}&page=${number}`)
-      .then(res => {
-        setCharacters(res.data.results);
-        setPagination(res.data.info);
+    axios
+      .get(`https://rickandmortyapi.com/api/episode/?name=${page}&page=${number}`)
+      .then(response => {
+        setEpisodes(response.data.results);
+        setPagination(response.data.info);
       });
   }, [page, number]);
 
-  if (!characters || !pagination) {
+  if (!episodes || !pagination) {
     return null;
   }
 
@@ -39,21 +39,25 @@ export default function CharacterList() {
   }
 
   const onSearch = search => {
-    setPage(search);
+    setPage(search)
+    
   };
+
   return (
     <div>
       <SearchForm onSearch={onSearch} />
       <div className="search-bar-section">
-      <Button className="ui button" onClick={()=>handleClick('previous')}>Previous</Button>
+      <Button className="ui button" onClick={()=>handleClick('prev')}>Previous</Button>
       
       <Button onClick={()=>handleClick('next')}>Next</Button>
       </div>
-      <section className="character-list grid-view">
-        {characters.map(character => {
-          return <CharacterCard key={character.id} character={character} />;
+      <section className="episode-list grid-view">
+        {episodes.map(episode => {
+          return <EpisodeCard key={episode.id} episode={episode} />;
         })}
       </section>
     </div>
   );
-}
+};
+
+export default EpisodeList;
