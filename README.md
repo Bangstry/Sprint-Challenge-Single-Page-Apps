@@ -29,7 +29,7 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 - [ ] What does AJAX stand for?
 > Answer: AJAX is an acronym for Asynchronous JavaScript and XML.
 - [ ] What are `controlled components` in React?
-> Answer:
+> Answer: Mutable components that can be controlled by the vaule of the state.
 
 
 ## Project Set Up
