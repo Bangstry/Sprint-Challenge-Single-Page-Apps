@@ -37,3 +37,40 @@ main {
 header h1 {
   text-align: center;
 }
+
+.activeNavButton{
+  color:white !important;
+  background:grey !important;
+}
+.search-bar{
+  /* width:20px; */
+  display:flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+button{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+form{
+  /* margin:0 auto; */
+  display: flex;
+  justify-content: center;
+}
+
+.fade-appear{
+  opacity:0;
+  z-index:1;
+  transition: 2000ms ease-out;
+}
+
+.fade-appear-active{
+  opacity:1;
+  transition: 2000ms ease-out;
+}
+
+.fade-appear.fade-appear-active{
+  opacity:1;
+  transition: 2000ms ease-out;
+}
